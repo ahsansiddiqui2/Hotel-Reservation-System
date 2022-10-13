@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Hotel extends Thread
 
  {
-    //Variables 
+        //Variables 
     ArrayList <Room> listofRooms = new ArrayList<Room>();
     Random random = new Random();
     private int [] ChargesPerDay={500,700,300,200,800,150};
@@ -25,28 +25,16 @@ public class Hotel extends Thread
     private String ask;
     private int hotelchosen;
     private int roomchosen;
-    /*
-     * methods 
-     */
-
-    
-    /**
-     * Constructor
-     * No arguments
-     */
+    private Room a=new Room();
+   
     public Hotel() {
-        this.city = " ";
+        this.city = "";
        listofRooms.add(new Room("3nd-Floor, 5S"));
        listofRooms.add(new Room("1st-Floor, 2A"));
        listofRooms.add(new Room("5th-Floor, 1F"));
        listofRooms.add(new Room("8th-Floor, 5C"));
     }
    
-    /**
-     * Constructor 
-     * argument
-     * @param city
-     */
     public Hotel(String city) {
         listofRooms.add(new Room("3nd-Floor, 5S"));
         listofRooms.add(new Room("1st-Floor, 2A"));
@@ -55,58 +43,44 @@ public class Hotel extends Thread
         this.city = city;
     }
    
-    /**
-     * @return
-     */
+    
     public ArrayList<Room> getListofRooms() {
         return listofRooms;
     }
    
-    /**
-     * @param listofRooms
-     */
+    
+     
     public void setListofRooms(ArrayList<Room> listofRooms) {
         this.listofRooms = listofRooms;
     }
    
-    /**
-     * @return
-     */
+    
     public int getChargePerDay() {
         return ChargePerDay;
     }
    
-    /**
-     * @param chargePerDay
-     */
+    
+     
     public void setChargePerDay(int chargePerDay) {
         ChargePerDay = chargePerDay;
     }
    
-    /**
-     * @return
-     */
+    
     public String getCity() {
         return city;
     }
    
-    /**
-     * @param city
-     */
+    
+    
     public void setCity(String city) {
         this.city = city;
     }
    
-    /**
-     * @return
-     */
+    
     public String[] getListOfHotels() {
         return listOfHotels;
     }
    
-    /**
-     * @param listOfHotels
-     */
     public void setListOfHotels(String[] listOfHotels) {
         this.listOfHotels = listOfHotels;
     }
@@ -117,10 +91,8 @@ public class Hotel extends Thread
                 + city + "]";
     }
 
-    /**
-     * @param c
-     * @return
-     */
+    
+   
     public String displayRoom(int roomchosen){
         if(roomchosen>0){
         select2 = roomchosen-1;
@@ -130,11 +102,7 @@ public class Hotel extends Thread
             return " ";
         }
     }
-
-    /**
-     * @param c
-     * @return
-     */
+    
     public String SelectHotel(int hotelchosen){
 
         if(hotelchosen>0){
@@ -149,35 +117,28 @@ public class Hotel extends Thread
         }
     }
 
-    /**
-     * 
-     */
+    
     public void displayListofHotels(){
         for(int i =0;i<listOfHotels.length;i++){
-            int j = 5;
-            String HotelName = listOfHotels[random.nextInt(j)];
+            // System.out.print(listOfHotels[i]);
             try {
                 Thread.sleep(700);
             } catch (InterruptedException e) {
             
                 e.printStackTrace();
             }
-            System.out.println((i+1)+". "+HotelName);
+            System.out.println((i+1)+". "+listOfHotels[i]);
         }
         
     }
 
-    /**
-     * @return
-     */
+    
     public int getNumberofRooms() {
 
         return listofRooms.size();
 
     }
-    /**
-     * 
-     */
+    
     public void displaylistofRooms(){
         for (int i = 0; i < getNumberofRooms(); i++) {
             try {
@@ -188,9 +149,7 @@ public class Hotel extends Thread
         }
     }
 
-    /**
-     * 
-     */
+    
     public void display(){
         Transaction first = new Transaction();
         System.out.println("Your name: "+first.getName());
@@ -201,8 +160,11 @@ public class Hotel extends Thread
         System.out.println("Room Number: "+listofRooms.get(select2).getRoomNo());
         System.out.println("Charges per Day: "+ChargePerDay);
         System.out.println("Credit Card "+Transaction[0]);
-        System.out.println("Credit Card CVV"+Transaction[1]);
-        System.out.println("Credit Card Date of Expiry"+Transaction[2]);
+        System.out.println("Credit Card CVV "+Transaction[1]);
+        System.out.println("Credit Card Date of Expiry "+Transaction[2]);
+        for(Room a:listofRooms){
+            System.out.println(a);
+           }
     }
 
     @Override
@@ -242,7 +204,8 @@ public class Hotel extends Thread
            chosenOne = true;
             while(scan.hasNextLine()){
                 ask = scan.next();
-                if (ask.equals("\n")||ask.equals("no")) {
+                String CVV = ask;
+                if (ask.equals(CVV)) {
                         break;
                 }
 
@@ -269,10 +232,8 @@ public class Hotel extends Thread
             display();
 
         }while(chosenOne);
-
     
             scan.close();
     }
 
 }
-
