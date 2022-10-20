@@ -1,6 +1,6 @@
 import json 
     
-
+Elem = ["phela hotel","dosra hotel","treesa hotel","fourth hotel"]
 # python object(dictionary) to be dumped 
 dict1 ={ 
     "hotel": { 
